@@ -50,7 +50,7 @@ public class GameController {
     }
 
     @RequestMapping(value = "/[platform]", method = RequestMethod.GET)
-    public List getGamesOnPlatform(@PathVariable Platform platform) {
-        return gameService.getGamesOnPlatform(platform);
+    public List getGamesOnPlatform(@PathVariable String platform) {
+        return gameService.getGamesOnPlatform(Platform.valueOf(platform));
     }
 }

@@ -1,7 +1,7 @@
 package com.exchangehelper.controller;
 
 import com.exchangehelper.model.UserGame;
-import com.exchangehelper.service.Impl.UserGameServiceImpl;
+import com.exchangehelper.service.UserGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +16,7 @@ import java.util.List;
 public class UserGameController {
 
     @Autowired
-    UserGameServiceImpl userGameService;
+    private UserGameService userGameService;
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public void addUserGame(@RequestBody UserGame userGame) {

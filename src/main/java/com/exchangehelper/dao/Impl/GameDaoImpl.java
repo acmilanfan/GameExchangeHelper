@@ -3,48 +3,51 @@ package com.exchangehelper.dao.Impl;
 import com.exchangehelper.dao.GameDao;
 import com.exchangehelper.model.Game;
 import com.exchangehelper.model.Platform;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository("gameDao")
-public class GameDaoImpl extends HibernateDaoSupport implements GameDao {
+public class GameDaoImpl implements GameDao {
+
+    @Autowired
+    private HibernateTemplate hibernateTemplate;
 
     @Override
     public void addGame(Game game) {
-        getHibernateTemplate().save(game);
+        hibernateTemplate.save(game);
     }
 
     @Override
     public void updateGame(Game game) {
-        getHibernateTemplate().update(game);
+        hibernateTemplate.update(game);
     }
 
     @Override
     public Game getGameById(long id) {
-        return getHibernateTemplate().get(Game.class, id);
+        return hibernateTemplate.get(Game.class, id);
     }
 
     @Override
     public List getAllGames() {
-        getHibernateTemplate().loadAll(Game.class);
-        return null;
+        return hibernateTemplate.loadAll(Game.class);
     }
 
     @Override
     public void deleteGame(Game game) {
-        getHibernateTemplate().delete(game);
+        hibernateTemplate.delete(game);
     }
 
     @Override
     public List getGamesByPartialTitle(String partialTitle) {
-        return getHibernateTemplate().find("select game from Game game where lower(game.title) like ?",
+        return hibernateTemplate.find("select game from Game game where lower(game.title) like ?",
                 "%" + partialTitle + "%");
     }
 
     @Override
     public List getGamesOnPlatform(Platform platform) {
-        return getHibernateTemplate().find("select game from Game game where game.platform = ?", platform);
+        return hibernateTemplate.find("select game from Game game where game.platform = ?", platform);
     }
 }

@@ -2,7 +2,10 @@ package com.exchangehelper.controller;
 
 import com.exchangehelper.model.User;
 import com.exchangehelper.service.Impl.UserServiceImpl;
+import com.exchangehelper.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    UserServiceImpl userService;
+    private UserService userService;
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public void addUser(@RequestBody User user) {

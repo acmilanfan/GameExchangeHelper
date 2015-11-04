@@ -17,7 +17,7 @@ import java.util.Set;
 @Entity
 @Table(name = "game")
 public class Game implements Serializable {
-
+    //todo configure fetch and customize all fields
     @Id
     @GeneratedValue
     @Column(name = "game_id")
@@ -33,7 +33,7 @@ public class Game implements Serializable {
     @Column(name = "platform")
     private Platform platform;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "wantedGames", fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "wantedGames", fetch = FetchType.EAGER)
     private Set<UserGame> wantedList;
 
     public Game() {

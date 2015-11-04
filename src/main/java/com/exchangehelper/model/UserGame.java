@@ -17,7 +17,7 @@ import java.util.Set;
 @Entity
 @Table(name = "user_game")
 public class UserGame implements Serializable {
-
+    //todo configure fetch and customize all fields
     @Id
     @GeneratedValue
     @Column(name = "user_game_id")

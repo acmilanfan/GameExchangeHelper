@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name = "user_table")
 public class User implements Serializable {
-
+    //todo configure fetch and customize all fields
     @Id
     @GeneratedValue
     @Column(name = "user_id")
@@ -28,7 +28,7 @@ public class User implements Serializable {
     @Column(name = "country")
     private String country;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<UserGame> games;
 
     @Column(name = "phone")

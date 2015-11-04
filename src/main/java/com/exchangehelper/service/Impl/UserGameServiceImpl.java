@@ -1,6 +1,6 @@
 package com.exchangehelper.service.Impl;
 
-import com.exchangehelper.dao.Impl.UserGameDaoImpl;
+import com.exchangehelper.dao.UserGameDao;
 import com.exchangehelper.model.UserGame;
 import com.exchangehelper.service.UserGameService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service("userGameService")
-public class UserGameServiceImpl implements UserGameService{
+public class UserGameServiceImpl implements UserGameService {
 
     @Autowired
-    UserGameDaoImpl userGameDao;
+    private UserGameDao userGameDao;
 
     @Transactional
     @Override

@@ -1,6 +1,6 @@
 package com.exchangehelper.service.Impl;
 
-import com.exchangehelper.dao.Impl.UserDaoImpl;
+import com.exchangehelper.dao.UserDao;
 import com.exchangehelper.model.User;
 import com.exchangehelper.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service("userService")
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserDaoImpl userDao;
+    private UserDao userDao;
 
     @Transactional
     @Override

@@ -2,29 +2,33 @@ package com.exchangehelper.dao.Impl;
 
 import com.exchangehelper.dao.UserDao;
 import com.exchangehelper.model.User;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository("userDao")
-public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
+public class UserDaoImpl implements UserDao {
+
+    @Autowired
+    private HibernateTemplate hibernateTemplate;
 
     @Override
     public void addUser(User user) {
-        getHibernateTemplate().save(user);
+        hibernateTemplate.save(user);
     }
 
     @Override
     public void deleteUser(User user) {
-        getHibernateTemplate().delete(user);
+        hibernateTemplate.delete(user);
     }
 
     @Override
     public User getUserById(long id) {
-        return getHibernateTemplate().get(User.class, id);
+        return hibernateTemplate.get(User.class, id);
     }
 
     @Override
     public void updateUser(User user) {
-        getHibernateTemplate().update(user);
+        hibernateTemplate.update(user);
     }
 }

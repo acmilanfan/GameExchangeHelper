@@ -1,16 +1,15 @@
 package com.exchangehelper.controller;
 
 import com.exchangehelper.model.User;
-import com.exchangehelper.service.Impl.UserServiceImpl;
 import com.exchangehelper.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -29,7 +28,12 @@ public class UserController {
         userService.deleteUser(user);
     }
 
-    @RequestMapping(value = "/[id]", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public List getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public User getUserById(@PathVariable long id) {
         return userService.getUserById(id);
     }

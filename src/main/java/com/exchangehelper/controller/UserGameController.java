@@ -33,7 +33,12 @@ public class UserGameController {
         userGameService.deleteUserGame(userGame);
     }
 
-    @RequestMapping(value = "/[id]", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public List getAllUserGames() {
+        return userGameService.getAllUserGames();
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public UserGame getUserGameById(@PathVariable long id) {
         return userGameService.getUserGameById(id);
     }

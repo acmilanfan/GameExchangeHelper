@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -29,7 +30,7 @@ public class GameController {
         gameService.updateGame(game);
     }
 
-    @RequestMapping(value = "/[id]", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Game getGameById(@PathVariable long id) {
         return gameService.getGameById(id);
     }
@@ -44,13 +45,18 @@ public class GameController {
         gameService.deleteGame(game);
     }
 
-    @RequestMapping(value = "/[part]", method = RequestMethod.GET)
+    @RequestMapping(value = "/part/{part}", method = RequestMethod.GET)
     public List getGamesByPartialTitle(@PathVariable String part) {
         return gameService.getGamesByPartialTitle(part);
     }
 
-    @RequestMapping(value = "/[platform]", method = RequestMethod.GET)
+    @RequestMapping(value = "/platform/{platform}", method = RequestMethod.GET)
     public List getGamesOnPlatform(@PathVariable String platform) {
-        return gameService.getGamesOnPlatform(Platform.valueOf(platform));
+        List result = null;
+        //if (!("null".equals(platform) || "".equals(platform))) {
+        Platform sd = Platform.valueOf(platform);
+                result = gameService.getGamesOnPlatform(Platform.valueOf(platform));
+        //}
+        return result;
     }
 }

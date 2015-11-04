@@ -9,5 +9,6 @@ public interface UserGameDao {
     void updateUserGame(UserGame userGame);
     void deleteUserGame(UserGame userGame);
     UserGame getUserGameById(long id);
+    List getAllUserGames();
     List getRecommendations(UserGame userGame);
 }

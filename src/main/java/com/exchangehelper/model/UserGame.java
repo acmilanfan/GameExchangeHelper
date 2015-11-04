@@ -1,5 +1,7 @@
 package com.exchangehelper.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +33,8 @@ public class UserGame implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "wanted_game", joinColumns = @JoinColumn(name = "user_game_id"),
             inverseJoinColumns = @JoinColumn(name = "game_id"))
     private Set<Game> wantedGames;

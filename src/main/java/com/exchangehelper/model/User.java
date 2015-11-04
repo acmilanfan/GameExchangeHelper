@@ -1,5 +1,7 @@
 package com.exchangehelper.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,7 +30,8 @@ public class User implements Serializable {
     @Column(name = "country")
     private String country;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<UserGame> games;
 
     @Column(name = "phone")

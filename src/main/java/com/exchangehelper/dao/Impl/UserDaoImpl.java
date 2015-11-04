@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository("userDao")
 public class UserDaoImpl implements UserDao {
 
@@ -25,6 +27,11 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User getUserById(long id) {
         return hibernateTemplate.get(User.class, id);
+    }
+
+    @Override
+    public List getAllUsers() {
+        return hibernateTemplate.loadAll(User.class);
     }
 
     @Override

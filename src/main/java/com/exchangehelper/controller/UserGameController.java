@@ -47,4 +47,9 @@ public class UserGameController {
     public List getRecommendations(@RequestBody UserGame userGame) {
         return userGameService.getRecommendations(userGame);
     }
+
+    @RequestMapping(value = "/wanted/", method = RequestMethod.GET)
+    public List getWantedGames(@RequestBody UserGame userGame) {
+        return userGameService.getWantedGames(userGame);
+    }
 }

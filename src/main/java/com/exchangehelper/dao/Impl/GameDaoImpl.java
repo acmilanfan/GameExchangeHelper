@@ -41,6 +41,12 @@ public class GameDaoImpl implements GameDao {
     }
 
     @Override
+    public List getWantedList(Game game) {
+        return hibernateTemplate.find("select game from UserGame game inner join fetch game.wantedGames wantedGame " +
+                "where wantedGame.id=?", game.getId());
+    }
+
+    @Override
     public List getGamesByPartialTitle(String partialTitle) {
         return hibernateTemplate.find("select game from Game game where lower(game.title) like ?",
                 "%" + partialTitle + "%");

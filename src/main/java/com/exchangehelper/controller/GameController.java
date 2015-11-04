@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -52,11 +51,11 @@ public class GameController {
 
     @RequestMapping(value = "/platform/{platform}", method = RequestMethod.GET)
     public List getGamesOnPlatform(@PathVariable String platform) {
-        List result = null;
-        //if (!("null".equals(platform) || "".equals(platform))) {
-        Platform sd = Platform.valueOf(platform);
-                result = gameService.getGamesOnPlatform(Platform.valueOf(platform));
-        //}
-        return result;
+        return gameService.getGamesOnPlatform(Platform.valueOf(platform));
+    }
+
+    @RequestMapping(value = "/wanted/", method = RequestMethod.GET)
+    public void getWantedList(@RequestBody Game game) {
+        gameService.getWantedList(game);
     }
 }

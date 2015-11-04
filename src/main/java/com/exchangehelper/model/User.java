@@ -16,6 +16,7 @@ import java.util.Set;
 @Table(name = "user_table")
 public class User implements Serializable {
     //todo configure fetch and customize all fields
+    //todo add hashCode and equals
     @Id
     @GeneratedValue
     @Column(name = "user_id")

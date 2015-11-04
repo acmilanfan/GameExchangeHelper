@@ -11,6 +11,7 @@ public interface GameDao {
     Game getGameById(long id);
     List getAllGames();
     void deleteGame(Game game);
+    List getWantedList(Game game);
     List getGamesByPartialTitle(String partialTitle);
     List getGamesOnPlatform(Platform platform);
 }

@@ -10,5 +10,6 @@ public interface UserService {
     void deleteUser(User user);
     User getUserById(long id);
     List getAllUsers();
+    List getGamesOfUser(User user);
     void updateUser(User user);
 }

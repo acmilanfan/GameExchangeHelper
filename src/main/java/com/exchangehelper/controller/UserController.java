@@ -42,4 +42,9 @@ public class UserController {
     public void updateUser(@RequestBody User user) {
         userService.updateUser(user);
     }
+
+    @RequestMapping(value = "/games/", method = RequestMethod.GET)
+    public void getGamesOfUser(@RequestBody User user) {
+        userService.getGamesOfUser(user);
+    }
 }

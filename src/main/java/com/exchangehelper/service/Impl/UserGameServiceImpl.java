@@ -44,6 +44,11 @@ public class UserGameServiceImpl implements UserGameService {
     }
 
     @Override
+    public List getWantedGames(UserGame userGame) {
+        return userGameDao.getWantedGames(userGame);
+    }
+
+    @Override
     public List getRecommendations(UserGame userGame) {
         return userGameDao.getRecommendations(userGame);
     }

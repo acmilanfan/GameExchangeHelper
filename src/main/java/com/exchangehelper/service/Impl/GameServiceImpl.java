@@ -45,6 +45,11 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
+    public List getWantedList(Game game) {
+        return gameDao.getWantedList(game);
+    }
+
+    @Override
     public List getGamesByPartialTitle(String partialTitle) {
         return gameDao.getGamesByPartialTitle(partialTitle);
     }

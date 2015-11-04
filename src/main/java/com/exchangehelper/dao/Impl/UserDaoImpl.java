@@ -35,6 +35,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public List getGamesOfUser(User user) {
+        return hibernateTemplate.find("select game from UserGame game " +
+                "where game.user.id=?", user.getId());
+    }
+
+    @Override
     public void updateUser(User user) {
         hibernateTemplate.update(user);
     }

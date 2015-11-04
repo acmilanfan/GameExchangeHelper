@@ -40,8 +40,14 @@ public class UserGameDaoImpl implements UserGameDao {
     }
 
     @Override
+    public List getWantedGames(UserGame userGame) {
+        return hibernateTemplate.find("select game from Game game inner join fetch game.wantedList wantedGame " +
+                "where wantedGame.id=?", userGame.getId());
+    }
+
+    @Override
     public List getRecommendations(UserGame userGame) {
-        return hibernateTemplate.find("select game from UserGame game inner join game.wantedGames wantedGame" +
+        return hibernateTemplate.find("select game from UserGame game inner join fetch game.wantedGames wantedGame " +
                 "where wantedGame.id = ?", userGame.getGame().getId());
     }
 }

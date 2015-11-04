@@ -37,6 +37,11 @@ public class UserServiceImpl implements UserService {
         return userDao.getAllUsers();
     }
 
+    @Override
+    public List getGamesOfUser(User user) {
+        return userDao.getGamesOfUser(user);
+    }
+
     @Transactional
     @Override
     public void updateUser(User user) {

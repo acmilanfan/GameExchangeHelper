@@ -20,6 +20,7 @@ import java.util.Set;
 @Table(name = "user_game")
 public class UserGame implements Serializable {
     //todo configure fetch and customize all fields
+    //todo add hashCode and equals
     @Id
     @GeneratedValue
     @Column(name = "user_game_id")

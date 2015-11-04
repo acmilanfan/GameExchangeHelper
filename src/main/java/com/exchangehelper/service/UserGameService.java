@@ -11,5 +11,6 @@ public interface UserGameService {
     void deleteUserGame(UserGame userGame);
     UserGame getUserGameById(long id);
     List getAllUserGames();
+    List getWantedGames(UserGame userGame);
     List getRecommendations(UserGame userGame);
 }

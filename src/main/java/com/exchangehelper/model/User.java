@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -38,7 +40,30 @@ public class User implements Serializable {
     @Column(name = "phone")
     private String phone;
 
+    @Column(name = "email")
+    private String email;
+
+    @JsonIgnore
+    @Column(name = "password")
+    private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private UserRole userRole;
+
     public User() {
+    }
+
+    public User(User user) {
+        this.id = user.id;
+        this.nickname = user.nickname;
+        this.city = user.city;
+        this.country = user.country;
+        this.games = user.games;
+        this.phone = user.phone;
+        this.email = user.email;
+        this.password = user.password;
+        this.userRole = user.userRole;
     }
 
     public long getId() {
@@ -87,5 +112,29 @@ public class User implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 }

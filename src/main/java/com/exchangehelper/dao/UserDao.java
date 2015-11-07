@@ -11,4 +11,5 @@ public interface UserDao {
     List getAllUsers();
     List getGamesOfUser(User user);
     void updateUser(User user);
+    User getUserByEmail(String email);
 }

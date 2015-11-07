@@ -44,4 +44,14 @@ public class UserDaoImpl implements UserDao {
     public void updateUser(User user) {
         hibernateTemplate.update(user);
     }
+
+    @Override
+    public User getUserByEmail(String email) {
+        List result = hibernateTemplate.find("select user from User user where user.email=?", email);
+        if (result.size() > 0) {
+            return (User) result.get(0);
+        } else {
+            return null;
+        }
+    }
 }

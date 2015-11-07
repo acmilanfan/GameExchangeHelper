@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+       xmlns:beans="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+       <!-- Временно в основном контексте все-->
+       <!--<http access-denied-page="access_denied.html">
+              <intercept-url pattern="/api/*" access="ROLE_USER,ROLE_ADMIN"/>
+              <form-login login-page="login.jsp"
+                          default-target-url="index.html"
+                          always-use-default-target="true"
+                          authentication-failure-url="error.html"/>
+              <logout logout-url="/logout" logout-success-url="index.html"/>
+              <remember-me user-service-ref="userService" key="1234"/>
+       </http>
+       
+       <authentication-manager alias="authenticationManager">
+              <authentication-provider user-service-ref="userService">
+                     <password-encoder ref="passwordEncoder"/>
+              </authentication-provider>
+       </authentication-manager>
+
+       <beans:bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter">
+              <beans:property name="rolePrefix" value=""/>
+       </beans:bean>-->
+</beans:beans>

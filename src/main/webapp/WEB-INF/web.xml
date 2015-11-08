@@ -10,11 +10,6 @@
                      classpath:security.xml</param-value>
     </context-param>
 
-    <context-param>
-        <param-name>appPropertyFile</param-name>
-        <param-value>classpath:app.properties</param-value>
-    </context-param>
-
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
